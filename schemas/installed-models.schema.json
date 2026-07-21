@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://usbrain.org/schemas/installed-models.schema.json",
+  "title": "USBRAIN Installed Models Descriptor",
+  "description": "Descriptor listing the LLMs installed by the Builder and available to the Runtime.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "models"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "default_model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/installedModel"
+      },
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "languageCode": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+    },
+    "relativeModelPath": {
+      "type": "string",
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)[^\\0]+$",
+      "minLength": 1
+    },
+    "installedModel": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "installed_model_id",
+        "display_name",
+        "relative_path",
+        "disk_size_gb",
+        "format",
+        "quantization",
+        "role",
+        "languages",
+        "recommended_ram_min_gb",
+        "recommended_ram_gb",
+        "cpu_only_viable",
+        "gpu_viable",
+        "runtime_family"
+      ],
+      "properties": {
+        "installed_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catalog_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variant_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relative_path": {
+          "$ref": "#/$defs/relativeModelPath"
+        },
+        "disk_size_gb": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "gguf",
+            "onnx",
+            "safetensors",
+            "other"
+          ]
+        },
+        "quantization": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "fallback",
+            "fast-small",
+            "quality-large"
+          ]
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/languageCode"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "recommended_ram_min_gb": {
+          "type": "number",
+          "minimum": 0
+        },
+        "recommended_ram_gb": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cpu_only_viable": {
+          "type": "boolean"
+        },
+        "gpu_viable": {
+          "type": "boolean"
+        },
+        "runtime_family": {
+          "type": "string",
+          "enum": [
+            "llamafile",
+            "llama.cpp",
+            "onnxruntime",
+            "custom"
+          ]
+        }
+      }
+    }
+  }
+}

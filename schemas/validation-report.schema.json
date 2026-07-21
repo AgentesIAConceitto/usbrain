@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://usbrain.org/schemas/validation-report.schema.json",
+  "title": "USBRAIN Validation Report",
+  "description": "Validation summary emitted by the Builder after assembling a USBRAIN build.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "validation_status",
+    "validated_at",
+    "builder_version",
+    "checks_performed",
+    "warnings",
+    "errors"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": [
+        "passed",
+        "passed-with-warnings",
+        "failed"
+      ]
+    },
+    "validated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "builder_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checks_performed": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/checkRecord"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/messageRecord"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/messageRecord"
+      }
+    }
+  },
+  "$defs": {
+    "checkRecord": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "warning",
+            "failed",
+            "skipped"
+          ]
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "messageRecord": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        }
+      }
+    }
+  }
+}

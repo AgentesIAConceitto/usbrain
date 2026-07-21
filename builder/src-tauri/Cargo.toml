@@ -1,0 +1,27 @@
+[package]
+name = "usbrain-builder"
+version = "0.1.0"
+description = "USBRAIN Builder desktop application"
+authors = ["USBRAIN"]
+edition = "2021"
+default-run = "usbrain-builder"
+license = "MIT"
+homepage = "https://usbrain.org"
+keywords = ["usbrain", "builder", "tauri", "offline", "portable-ai"]
+
+[lib]
+name = "usbrain_builder_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+dirs = "6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+ureq = { version = "2", features = ["json"] }

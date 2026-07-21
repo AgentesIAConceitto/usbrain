@@ -1,0 +1,50 @@
+name: Feature request
+description: Propose a product, UX or platform improvement for USBRAIN
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este template para propor melhorias reais de produto, UX, runtime, catalogo de modelos ou Builder.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      options:
+        - Builder UX
+        - Runtime capability
+        - Model catalog
+        - PACK authoring
+        - Distribution and release
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema ou oportunidade
+      description: Qual dor real esta motivando esta proposta?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta
+      description: Descreva a mudanca sugerida.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto esperado
+      description: Explique como isso melhora o Builder, o Runtime ou o ecossistema.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Restricoes ou dependencias
+      description: Liste contratos, plataformas, limites de hardware ou outros fatores importantes.

@@ -1,0 +1,37 @@
+{
+  "name": "usbrain-builder",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Desktop GUI for planning, validating and publishing USBRAIN portable AI builds",
+  "license": "MIT",
+  "author": "USBRAIN",
+  "homepage": "https://usbrain.org",
+  "type": "module",
+  "keywords": [
+    "usbrain",
+    "tauri",
+    "rust",
+    "offline-ai",
+    "portable-ai"
+  ],
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 1420",
+    "build": "tsc && vite build",
+    "test": "node ./scripts/validate-real-catalog.mjs",
+    "test:build": "tsc && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 1421",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0",
+    "@tauri-apps/plugin-dialog": "^2.7.1",
+    "@tauri-apps/plugin-fs": "^2.5.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "jsdom": "^29.1.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^4.1.9"
+  }
+}

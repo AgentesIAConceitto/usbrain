@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://usbrain.org/schemas/provider-config.schema.json",
+  "title": "USBRAIN Provider Config",
+  "description": "Optional provider configuration consumed by the Runtime for hybrid or assisted modes.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "providers_enabled",
+    "fallback_policy",
+    "credential_mode",
+    "providers"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "providers_enabled": {
+      "type": "boolean"
+    },
+    "fallback_policy": {
+      "type": "string",
+      "enum": [
+        "none",
+        "local-only",
+        "local-then-cloud",
+        "user-confirmed-cloud"
+      ]
+    },
+    "credential_mode": {
+      "type": "string",
+      "enum": [
+        "none",
+        "local-secure-store",
+        "portable-encrypted-ref",
+        "external-only"
+      ]
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/providerEntry"
+      }
+    }
+  },
+  "$defs": {
+    "providerEntry": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "provider_id",
+        "enabled",
+        "usage_policy"
+      ],
+      "properties": {
+        "provider_id": {
+          "type": "string",
+          "enum": [
+            "openai",
+            "anthropic",
+            "google-gemini",
+            "deepseek",
+            "custom"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "credential_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_preferences": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "usage_policy": {
+          "type": "string",
+          "enum": [
+            "disabled",
+            "explicit-only",
+            "fallback-only",
+            "allowed"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

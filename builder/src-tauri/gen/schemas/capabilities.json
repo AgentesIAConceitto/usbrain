@@ -1,0 +1,1 @@
+{"main-capability":{"identifier":"main-capability","description":"Capability for the main USBRAIN Builder window.","local":true,"windows":["main"],"permissions":["core:default","core:event:default","dialog:default","fs:default","fs:allow-start-accessing-security-scoped-resource","fs:allow-stop-accessing-security-scoped-resource"]}}

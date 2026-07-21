@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {
+      "label": "huggingface-top-gguf-instruct",
+      "snapshot_url": "https://huggingface.co/api/models?filter=gguf&search=Instruct&limit=30&sort=downloads&direction=-1"
+    },
+    {
+      "label": "huggingface-top-gguf-coder",
+      "snapshot_url": "https://huggingface.co/api/models?filter=gguf&search=Coder&limit=30&sort=downloads&direction=-1"
+    },
+    {
+      "label": "huggingface-top-gguf-vl",
+      "snapshot_url": "https://huggingface.co/api/models?filter=gguf&search=VL&limit=30&sort=downloads&direction=-1"
+    }
+  ]
+}

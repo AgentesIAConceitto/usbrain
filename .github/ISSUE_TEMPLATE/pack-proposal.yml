@@ -1,0 +1,51 @@
+name: PACK proposal
+description: Propose a specialist PACK, authoring workflow or PACK ecosystem improvement
+title: "[PACK]: "
+labels:
+  - pack
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este template para propor PACKs especialistas, fluxos de autoria ou recursos do ecossistema de PACKs.
+  - type: input
+    id: pack_name
+    attributes:
+      label: Nome do PACK
+      placeholder: USBRAIN Legal Research Pack
+    validations:
+      required: true
+  - type: dropdown
+    id: pack_type
+    attributes:
+      label: Tipo do PACK
+      options:
+        - Knowledge
+        - Behavior
+        - Tool
+        - Hybrid
+    validations:
+      required: true
+  - type: textarea
+    id: target_user
+    attributes:
+      label: Usuario ou caso de uso alvo
+      description: Para quem este PACK existe e qual problema resolve?
+    validations:
+      required: true
+  - type: textarea
+    id: contents
+    attributes:
+      label: Conteudo, ferramentas ou comportamento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencias e requisitos
+      description: Inclua modelos, dados, licencas, ferramentas externas ou restricoes legais.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Como validar
+      description: Defina sinais objetivos de que o PACK esta funcional e seguro.

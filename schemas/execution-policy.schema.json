@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://usbrain.org/schemas/execution-policy.schema.json",
+  "title": "USBRAIN Execution Policy",
+  "description": "Operational policy consumed by the Runtime to choose allowed execution paths and preferences.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "policy_id",
+    "allow_cloud_fallback",
+    "allow_gpu",
+    "prefer_cpu_only",
+    "priority_mode",
+    "fallback_strategy",
+    "max_active_model_count",
+    "context_strategy",
+    "pack_activation_strategy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "policy_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allow_cloud_fallback": {
+      "type": "boolean"
+    },
+    "allow_gpu": {
+      "type": "boolean"
+    },
+    "prefer_cpu_only": {
+      "type": "boolean"
+    },
+    "priority_mode": {
+      "type": "string",
+      "enum": [
+        "speed",
+        "quality",
+        "balanced",
+        "offline-max",
+        "rag-oriented"
+      ]
+    },
+    "fallback_strategy": {
+      "type": "string",
+      "enum": [
+        "none",
+        "local-only",
+        "local-then-cloud",
+        "user-confirmed-cloud"
+      ]
+    },
+    "max_active_model_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "context_strategy": {
+      "type": "string",
+      "enum": [
+        "adaptive",
+        "conservative",
+        "max-quality"
+      ]
+    },
+    "pack_activation_strategy": {
+      "type": "string",
+      "enum": [
+        "all-compatible",
+        "language-first",
+        "on-demand",
+        "profile-priority"
+      ]
+    },
+    "max_memory_pressure_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "prefer_low_latency": {
+      "type": "boolean"
+    },
+    "allow_background_downloads": {
+      "type": "boolean"
+    }
+  }
+}

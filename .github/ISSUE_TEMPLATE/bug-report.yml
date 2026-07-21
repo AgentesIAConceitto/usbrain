@@ -1,0 +1,68 @@
+name: Bug report
+description: Report a bug in the USBRAIN Builder, Runtime or distribution flow
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar um bug no USBRAIN.
+        Preencha os campos abaixo com evidencias objetivas para acelerar a analise.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area afetada
+      options:
+        - Builder GUI
+        - Builder backend
+        - Runtime
+        - Schemas and contracts
+        - Distribution and release
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Resumo do problema
+      description: Explique o comportamento observado.
+      placeholder: O Builder falha ao preparar o pacote de release apos o gate de distribuicao.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. Abrir o Builder
+        2. Gerar um build plan
+        3. Preparar a distribuicao final
+        4. Preparar o pacote de release
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Resultado atual
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Inclua sistema operacional, versao do projeto, hardware e detalhes relevantes.
+      placeholder: macOS 15 / Windows 11 / Linux, USB 64GB, 16GB RAM, Builder 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs, screenshots ou artefatos
+      description: Cole trechos relevantes ou informe os arquivos gerados.

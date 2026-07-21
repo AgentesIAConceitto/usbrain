@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://usbrain.org/schemas/runtime-config.schema.json",
+  "title": "USBRAIN Runtime Config",
+  "description": "Operational defaults written by the Builder to simplify Runtime boot.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "runtime_version",
+    "default_ui_port",
+    "default_api_port",
+    "default_host",
+    "runtime_root",
+    "models_root",
+    "packs_root",
+    "semantic_root",
+    "logs_root",
+    "agent_entrypoint",
+    "semantic_backend",
+    "llm_runtime_family"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "runtime_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "default_ui_port": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65535
+    },
+    "default_api_port": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65535
+    },
+    "default_host": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_root": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "models_root": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "packs_root": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "semantic_root": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "logs_root": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "agent_entrypoint": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "semantic_backend": {
+      "type": "string",
+      "enum": [
+        "bge-m3",
+        "custom",
+        "disabled"
+      ]
+    },
+    "llm_runtime_family": {
+      "type": "string",
+      "enum": [
+        "llamafile",
+        "llama.cpp",
+        "onnxruntime",
+        "custom"
+      ]
+    },
+    "preferred_log_level": {
+      "type": "string",
+      "enum": [
+        "debug",
+        "info",
+        "warning",
+        "error"
+      ]
+    },
+    "boot_timeout_profile": {
+      "type": "string",
+      "enum": [
+        "fast",
+        "balanced",
+        "slow-storage"
+      ]
+    },
+    "port_strategy": {
+      "type": "string",
+      "enum": [
+        "fixed",
+        "prefer-fixed-then-fallback",
+        "dynamic"
+      ]
+    }
+  },
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\.\\.)[^\\0]+$",
+      "minLength": 1
+    }
+  }
+}

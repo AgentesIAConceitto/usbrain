@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Report
+    url: https://usbrain.org
+    about: Use the responsible disclosure flow described in SECURITY.md for sensitive vulnerabilities.
+  - name: Product and Ecosystem Context
+    url: https://usbrain.org
+    about: Review the public ecosystem context before opening broader product discussions.

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "USBRAIN Builder",
+  "version": "0.1.0",
+  "identifier": "org.usbrain.builder",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist",
+    "devUrl": "http://127.0.0.1:1420"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "USBRAIN Builder",
+        "width": 1320,
+        "height": 880,
+        "minWidth": 1100,
+        "minHeight": 760,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "resources": {
+      "../../catalog/model-catalog.snapshot.json": "app/catalog/model-catalog.snapshot.json",
+      "../../catalog/catalog-sources.json": "app/catalog/catalog-sources.json",
+      "../../cache/llamafile.exe": "app-cache/llamafile.exe",
+      "../../cache/python/": "app-cache/python/",
+      "../../cache/macos-python-standalone/extracted/python/bin": "app-cache/python-macos/bin",
+      "../../cache/macos-python-standalone/extracted/python/include": "app-cache/python-macos/include",
+      "../../cache/macos-python-standalone/extracted/python/lib": "app-cache/python-macos/lib",
+      "../../cache/macos-python-standalone/extracted/python/share": "app-cache/python-macos/share",
+      "../../cache/bge-m3-model/": "app-cache/bge-m3-model/",
+      "../../models/": "app/models/",
+      "../../main.py": "app/main.py",
+      "../../agent.py": "app/agent.py",
+      "../../personality.md": "app/personality.md",
+      "../../requirements.txt": "app/requirements.txt",
+      "../../README.txt": "app/README.txt",
+      "../../start.bat": "app/start.bat",
+      "../../start.sh": "app/start.sh",
+      "../../llamafile": "app/llamafile",
+      "../../llamafile-linux": "app/llamafile-linux",
+      "../../tools/": "app/tools/",
+      "../../skills/": "app/skills/",
+      "../../rag/": "app/rag/",
+      "../../webui/server.py": "app/webui/server.py",
+      "../../webui/templates/": "app/webui/templates/",
+      "../../schemas/": "schemas/"
+    },
+    "macOS": {
+      "entitlements": "./Entitlements.plist"
+    }
+  }
+}
